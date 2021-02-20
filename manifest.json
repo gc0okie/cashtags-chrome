@@ -1,9 +1,8 @@
 {
     "name": "cashtag info",
     "description": "Shows cnbc info on cashtags you hover over in Twitter",
-    "version": "0.1.0",
+    "version": "1.0",
     "manifest_version": 2,
-    "options_page": "./options.html",
     "browser_action": {
         "default_popup": "popup.html"
     },

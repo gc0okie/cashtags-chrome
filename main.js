@@ -13,7 +13,7 @@ document.addEventListener("mouseover", function(event) {
             var cashtag = event.target.innerHTML.replace("$","");
             var cnbcUrl = "https://www.cnbc.com/quotes/"+cashtag+"?tab=profile"
             
-            initFinvizWindow();
+            initTickerWindow();
             
             mousePos = {top:event.pageY,left:event.pageX};
             calculatePosition();
@@ -26,7 +26,7 @@ document.addEventListener("mouseover", function(event) {
             if (loadedTickers.has(cashtag))
             {
                 var companyInfo = loadedTickers.get(cashtag);
-                populateFinvizwindow(companyInfo);
+                populateTickerWindow(companyInfo);
             } else {
                 loadedTickers.set(cashtag, "Loading...");
                 $.ajax({
@@ -42,13 +42,13 @@ document.addEventListener("mouseover", function(event) {
                         var companyInfo = {ticker:cashtag, price:_price, profile:_profile}
                         loadedTickers.set(cashtag, companyInfo);
 
-                        populateFinvizwindow(companyInfo);
+                        populateTickerWindow(companyInfo);
                     },
                     statusCode: {
                         404: function() {
                             var companyInfo = {ticker: cashtag, price: '', profile: 'No company info found'}
                             loadedTickers.set(cashtag, companyInfo);
-                            populateFinvizwindow(companyInfo);
+                            populateTickerWindow(companyInfo);
                         }
                     }
                 });
@@ -59,7 +59,7 @@ document.addEventListener("mouseover", function(event) {
     }
 })
 
-function initFinvizWindow() {
+function initTickerWindow() {
     if (!tickerWindow) {
         tickerWindow = $('<div id="tickerWindow"></div>').appendTo(document.body);
     }
@@ -88,7 +88,7 @@ function calculatePosition()
 	tickerWindowPos = {'top':top,'left':left};
 }
 
-function populateFinvizwindow(companyInfo) {
+function populateTickerWindow(companyInfo) {
     tickerWindow.empty();
 
     if (companyInfo.ticker == undefined) {
