@@ -21,7 +21,6 @@
         }
     ],
     "permissions": [
-        "tabs",
         "https://www.twitter.com/*",
         "https://twitter.com/*"
     ]
