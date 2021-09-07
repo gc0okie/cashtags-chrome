@@ -1,5 +1,7 @@
 console.log('main.js');
 
+//test
+
 var tickerWindow;
 var tickerWindowPos;
 var mousePos;
